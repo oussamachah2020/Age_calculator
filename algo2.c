@@ -4,7 +4,7 @@
 // function to calculate current age
 void age()
 {
-  int month_days[] = {31,30};
+  int month_days[] = {31,30,31,30,31};
   int present_year,present_month,present_day;
   int birth_year,birth_month,birth_day;
 
