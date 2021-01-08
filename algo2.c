@@ -4,7 +4,7 @@
 // function to calculate current age
 void age()
 {
-  int month_days[] = {31,30,31,30,31};
+  int month_days[] = {31,30,31,30,31}; //an array for the final_day difference
   int present_year,present_month,present_day;
   int birth_year,birth_month,birth_day;
 
@@ -17,11 +17,11 @@ void age()
   int month;
   int year = (present_year - birth_year) - 1;
 
-    if(day == 30 || day == 31)
+    if(day == 30 || day == 31) //one month have 31 or 30 days
     {
       ++month;
     }
-    if(month == 12)
+    if(month == 12) // 1 year = 12 months
     {
       ++year;
     }
@@ -42,7 +42,7 @@ void age()
 
   int flag;
 
-  if(year%400 == 0 || year%4 == 0)
+  if(year%400 == 0 || year%4 == 0) // for the leap year
   {
     flag = 1;
   }else
@@ -54,6 +54,6 @@ void age()
 
 int main()
 {
-  age();
+  age(); //passing the age function
   return 0;
 }
