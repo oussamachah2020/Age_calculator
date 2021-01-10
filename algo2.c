@@ -1,59 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 // function to calculate current age
 void age()
 {
-  int month_days[] = {31,30,31,30};//a month can have 31 or 30 days
-  int present_year,present_month,present_day;
-  int birth_year,birth_month,birth_day;
+  int month_days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };//the days of every month in a year
+  int present_date,present_month,present_year,birth_date,birth_month,birth_year;
+  int year,month,day;
 
-  printf("\n\tEnter present_date (dd/mm/yy): ");
-  scanf("%d/%d/%d",&present_day,&present_month,&present_year);
-  printf("\n\tEnter your birth_date (dd/mm/yy): ");
-  scanf("%d/%d/%d",&birth_day,&birth_month,&birth_year);
+  printf("Enter the present_date(mm/dd/yy): ");
+  scanf("%d/%d/%d",&present_date,&present_month,&present_year);
+  printf("Enter the birth_date(mm/dd/yy): ");
+  scanf("%d/%d/%d",&birth_date,&birth_month,&birth_year);
 
-  int day;
-  int month;
-  int year = (present_year - birth_year) - 1;
+    // to get the actual age
+   if (birth_date > present_date) {
+      present_date = present_date + month_days[birth_month - 1];
+      present_month = present_month - 1;
+   }
+   if (birth_month > present_month) {
+      present_year = present_year - 1;
+      present_month = present_month + 12;
+   }
+   int final_date = present_date - birth_date;
+   int final_month = present_month - birth_month;
+   int final_year = present_year - birth_year;
+   printf("Present Age : %d years  %d months and %d days", final_year, final_month, final_date);
 
-  if(year <= 0)
-  {
-    year = (present_year - birth_year) - 1 * 0;
-  }
-
-    if(day == 30 || day == 31)
-    {
-      ++month;
-    }
-    if(month == 12)
-    {
-      ++year;
-    }
-
-  if(present_day > birth_day)
-  {
-    day = present_day - birth_day;
-  }else {
-    day = (present_day - birth_day) * (-1);
-  }
-
-  if(present_month > birth_month)
-  {
-    month = (present_month - birth_month) + 12;
-  }else {
-    month = (present_month - birth_month) * (-1);
-  }
-
-  int flag;
-
-  if(year%400 == 0 || year%4 == 0)//for the leap year
-  {
-    flag = 1;
-  }else
-    flag = 0;
-
-    printf("\n\tYour age is : %d year %d months and %d days",year,month,day);
 }
 
 
@@ -62,4 +34,5 @@ int main()
   age();//passing the age function
   return 0;
 }
+
 
